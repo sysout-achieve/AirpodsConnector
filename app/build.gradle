@@ -1,0 +1,89 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    flavorDimensions "flavors"
+    defaultConfig {
+        applicationId "com.gunt.airpodsconnector"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug {
+            splits.abi.enable = false
+            splits.density.enable = false
+            aaptOptions.cruncherEnabled = false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            applicationIdSuffix ".${appMainName}.dev"
+//            buildConfigField "String", "APP_MAIN_FLAG", "${appMainFlag}"
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            applicationIdSuffix ".$appMainName"
+//            buildConfigField "String", "APP_MAIN_FLAG", "${appMainFlag}"
+//            applicationVariants.all { variant ->
+//                variant.outputs.all { outputFileName = "${appMainName}_${variant.name}_${variant.versionName}.apk" } }
+        }
+    }
+    buildFeatures {
+        viewBinding true
+        dataBinding true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    productFlavors {
+
+        free {
+            applicationIdSuffix ".free"
+            versionCode 1
+            versionName "1.0.0"
+            buildConfigField 'boolean', 'IS_FREE', "true"
+        }
+
+        paid {
+            applicationIdSuffix ".paid"
+            versionCode 2
+            versionName "1.0.1"
+            buildConfigField 'boolean', 'IS_FREE', "false"
+        }
+    }
+
+
+}
+
+dependencies {
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.6.0'
+    implementation 'androidx.appcompat:appcompat:1.3.0'
+    implementation 'com.google.android.material:material:1.4.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //ViewModel
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    implementation 'com.github.tlgbltcn:BluetoothHelper:v1.0'
+}
