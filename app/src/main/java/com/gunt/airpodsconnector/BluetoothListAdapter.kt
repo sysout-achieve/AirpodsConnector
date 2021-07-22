@@ -5,8 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gunt.airpodsconnector.databinding.ItemBluetoothDeviceBinding
 
-class BluetoothListAdapter(private var item: ArrayList<BluetoothDeviceModel>) :
-    RecyclerView.Adapter<BluetoothListAdapter.ViewHolder>() {
+class BluetoothListAdapter(
+    private var item: ArrayList<BluetoothDeviceModel>
+) : RecyclerView.Adapter<BluetoothListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemBluetoothDeviceBinding.inflate(LayoutInflater.from(parent.context), parent, false)

@@ -84,6 +84,4 @@ dependencies {
 
     //ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
-
-    implementation 'com.github.tlgbltcn:BluetoothHelper:v1.0'
 }
