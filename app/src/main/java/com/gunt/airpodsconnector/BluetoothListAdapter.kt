@@ -6,7 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gunt.airpodsconnector.databinding.ItemBluetoothDeviceBinding
 
 class BluetoothListAdapter(
-    private var item: ArrayList<BluetoothDeviceModel>
+    private var item: ArrayList<BluetoothDeviceModel>,
+    private var onClick: (BluetoothDeviceModel) -> Unit
 ) : RecyclerView.Adapter<BluetoothListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,6 +21,7 @@ class BluetoothListAdapter(
         holder.binding.apply {
             deviceName.text = item[position].name
             macAddress.text = item[position].macNumber
+            root.setOnClickListener { onClick(item[position]) }
         }
     }
 
